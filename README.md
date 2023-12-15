@@ -9,9 +9,9 @@ The script runs a binary search of all number combinations in a range, using the
 17+950=
 ```
 
-until a first pair of numbers `a`, `b` yields a wrong answer. 
+until a pair of numbers `a`, `b` yields a wrong answer. 
 
-Currently uses OpenAI's latest model, `gpt-3.5-turbo-instruct`.
+Currently uses `gpt-3.5-turbo`, can be changed to `gpt-4`.
 
 ### Example: addition
 

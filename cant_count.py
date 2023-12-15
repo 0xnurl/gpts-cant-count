@@ -11,7 +11,7 @@ import openai
 logger.remove()
 logger.add(sys.stderr, level="INFO")
 
-_MODEL = "gpt-3.5-turbo-instruct"
+_MODEL = "gpt-3.5-turbo"
 _API_KEY = os.getenv("OPENAI_API_KEY")
 
 _CLIENT = openai.OpenAI(api_key=_API_KEY)
@@ -25,7 +25,7 @@ def _send_request(prompt):
                 "content": prompt,
             }
         ],
-        model="gpt-3.5-turbo",
+        model=_MODEL,
     )
 
 
