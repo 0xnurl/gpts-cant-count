@@ -1,4 +1,5 @@
 import itertools
+import operator
 import os
 import re
 import sys
@@ -44,34 +45,40 @@ def _get_response_answers(response) -> tuple[int, ...]:
     return tuple(ints)
 
 
-def _send_and_check_a_plus_b(a, b):
-    prompt = f"{a}+{b}="
+def _send_and_verify(a, b, op, operator_func):
+    prompt = f"{a}{op}{b}="
     response = _send_request(prompt)
     answers = _get_response_answers(response)
-    a_plus_b = a + b
-    return any(answer == a_plus_b for answer in answers), response
+    target = operator_func(a, b)
+    return any(answer == target for answer in answers), response
 
 
-def run_binary_search(min_n, max_n, max_attempts):
+def run_binary_search(min_n, max_n, max_attempts, op):
+    operator_func = {
+        "+": operator.add,
+        "*": operator.mul,
+        "-": operator.sub,
+    }[op]
+
     all_combinations = tuple(itertools.product(range(min_n, max_n + 1), repeat=2))
     curr_idx = 0
     max_idx = len(all_combinations) - 1
     next_idx = max_idx // 2
 
-    logger.info(f"Running binary search from {min_n:,} to {max_n:,}...")
+    logger.info(
+        f"Running binary search from {min_n:,} to {max_n:,}, operator '{op}'..."
+    )
 
     num_attempts = 0
     while num_attempts < max_attempts:
         num_attempts += 1
 
         a, b = all_combinations[curr_idx]
-        logger.debug(f"Testing {a:,} + {b:,}")
-        is_correct, response = _send_and_check_a_plus_b(a, b)
-
-        logger.debug(str(response))
+        logger.debug(f"Testing {a:,} {op} {b:,}")
+        is_correct, response = _send_and_verify(a, b, op, operator_func)
 
         if is_correct:
-            logger.info(f"{a:,} + {b:,} correct.")
+            logger.info(f"{a:,} {op} {b:,} correct.")
             logger.debug(
                 f"Model answered correctly: '{response.choices[0].message.content}'."
             )
@@ -79,9 +86,9 @@ def run_binary_search(min_n, max_n, max_attempts):
             next_idx = ((max_idx - next_idx) // 2) + next_idx
             logger.debug(f"Next idx: {next_idx}")
         else:
-            logger.info(f"{a:,} + {b:,} INCORRECT!!!")
+            logger.info(f"{a:,} {op} {b:,} INCORRECT!!!")
             logger.info(f"Model answered: '{response.choices[0].message.content}'.")
-            logger.info(f"Correct answer was: {a+b:,}.")
+            logger.info(f"Correct answer was: {operator_func(a,b):,}.")
             break
 
     logger.info(f"Done after {num_attempts} attempts.")
@@ -104,8 +111,16 @@ if __name__ == "__main__":
         type=int,
         required=True,
     )
+    arg_parser.add_argument(
+        "--op",
+        type=str,
+        default="+",
+    )
     options = arg_parser.parse_args()
 
     run_binary_search(
-        min_n=options.min, max_n=options.max, max_attempts=options.max_attempts
+        min_n=options.min,
+        max_n=options.max,
+        max_attempts=options.max_attempts,
+        op=options.op,
     )
