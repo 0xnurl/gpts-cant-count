@@ -31,7 +31,6 @@ Running binary search from 100,000 to 100,500...
 100,500 + 100,377 INCORRECT!!!
 Model answered: '201,877'.
 Correct answer was: 200,877.
-Done after 12 attempts.
 ```
 
 ## Usage
