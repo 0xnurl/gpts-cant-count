@@ -1,4 +1,4 @@
-# GPTs can't count
+# GPTs can't count 🎲 
 
 ### Demo for even the most advanced LLMs' inability to handle basic arithmetic.
 
