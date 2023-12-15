@@ -1,6 +1,6 @@
 # GPTs can't count 🎲 
 
-### Demo for even the most advanced LLMs' inability to handle basic arithmetic.
+### Demo of even the most advanced LLMs' inability to handle basic arithmetic.
 
 For a theory about what might be the source of this and how it could be fixed, see [Minimum Description Length Recurrent Neural Networks](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00489/112499/Minimum-Description-Length-Recurrent-Neural).
 
