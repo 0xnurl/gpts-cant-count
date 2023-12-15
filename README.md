@@ -16,20 +16,21 @@ The script currently uses OpenAI's latest model, `gpt-3.5-turbo-instruct`.
 ### Example:
 
 ```bash
-python cant_count.py --min 100000000 --max 100001000 --max_attempts 250
+python cant_count.py --min 100000 --max 100500 --max_attempts 30
 ```
 
 Output:
 ```
->> Running binary search from 100,000,000 to 100,001,000...
-100,000,000 + 100,000,000 correct
-100,000,500 + 100,000,500 correct
+Running binary search from 100,000 to 100,500...
+100,000 + 100,000 correct.
+100,250 + 100,250 correct.
 ...
-100,001,000 + 100,000,877 correct
-100,001,000 + 100,000,938 correct
-100,001,000 + 100,000,969 INCORRECT !!!
-Model answered: '200002969'.
-Correct answer was: 200,001,969.
+100,499 + 100,020 correct.
+100,500 + 100,009 correct.
+100,500 + 100,254 correct.
+100,500 + 100,377 INCORRECT!!!
+Model answered: '201,877'.
+Correct answer was: 200,877.
 ```
 
 ## Usage

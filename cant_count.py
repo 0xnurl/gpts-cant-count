@@ -71,7 +71,7 @@ def run_binary_search(min_n, max_n, max_attempts):
         logger.debug(str(response))
 
         if is_correct:
-            logger.info(f"{a:,} + {b:,} correct")
+            logger.info(f"{a:,} + {b:,} correct.")
             logger.debug(
                 f"Model answered correctly: '{response.choices[0].message.content}'."
             )
@@ -79,7 +79,7 @@ def run_binary_search(min_n, max_n, max_attempts):
             next_idx = ((max_idx - next_idx) // 2) + next_idx
             logger.debug(f"Next idx: {next_idx}")
         else:
-            logger.info(f"{a:,} + {b:,} INCORRECT !!!")
+            logger.info(f"{a:,} + {b:,} INCORRECT!!!")
             logger.info(f"Model answered: '{response.choices[0].message.content}'.")
             logger.info(f"Correct answer was: {a+b:,}.")
             break
