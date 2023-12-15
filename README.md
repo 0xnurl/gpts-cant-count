@@ -4,7 +4,7 @@
 
 For a theory about what might be the source of this and how it could be fixed, see [Minimum Description Length Recurrent Neural Networks](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00489/112499/Minimum-Description-Length-Recurrent-Neural).
 
-The script runs a binary search of all number combinations in a range, using the template `a{op}b=`, e.g.:
+The script runs a binary search over number combinations in a range, using the template `a{op}b=`, e.g.:
 ```
 17+950=
 ```
