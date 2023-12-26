@@ -4,7 +4,7 @@
 
 For a theory about what might be the source of this and how it could be fixed, see [Minimum Description Length Recurrent Neural Networks](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00489/112499/Minimum-Description-Length-Recurrent-Neural).
 
-The script runs a binary search over number combinations in a range, using the template `a{op}b=`, e.g.:
+The script scans number combinations in a range, using the template `a{op}b=`, e.g.:
 ```
 17+950=
 ```
@@ -21,7 +21,7 @@ python cant_count.py --min 1000 --max 1100 --max_attempts 20 --op "+"
 
 Output:
 ```
-Running binary search from 1,000 to 1,100, operator '+'... 
+Running from 1,000 to 1,100, operator '+'... 
 1,000 + 1,000 correct.                                     
 1,050 + 1,050 correct.                                     
 ...
@@ -40,7 +40,7 @@ python cant_count.py --min 1000 --max 1100 --max_attempts 20 --op "*"
 
 Output:
 ```
-Running binary search from 1,000 to 1,100...                  
+Running from 1,000 to 1,100...                  
 1,000 * 1,000 correct.                                        
 1,050 * 1,050 correct.                                        
 1,075 * 1,075 correct.                                        

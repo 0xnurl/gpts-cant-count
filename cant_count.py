@@ -53,7 +53,8 @@ def _send_and_verify(a, b, op, operator_func):
     return any(answer == target for answer in answers), response
 
 
-def run_binary_search(min_n, max_n, max_attempts, op):
+def run(min_n, max_n, max_attempts, op):
+    # Up-only binary search of the range.
     operator_func = {
         "+": operator.add,
         "*": operator.mul,
@@ -65,9 +66,7 @@ def run_binary_search(min_n, max_n, max_attempts, op):
     max_idx = len(all_combinations) - 1
     next_idx = max_idx // 2
 
-    logger.info(
-        f"Running binary search from {min_n:,} to {max_n:,}, operator '{op}'..."
-    )
+    logger.info(f"Running from {min_n:,} to {max_n:,}, operator '{op}'...")
 
     num_attempts = 0
     while num_attempts < max_attempts:
@@ -118,7 +117,7 @@ if __name__ == "__main__":
     )
     options = arg_parser.parse_args()
 
-    run_binary_search(
+    run(
         min_n=options.min,
         max_n=options.max,
         max_attempts=options.max_attempts,
