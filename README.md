@@ -11,7 +11,7 @@ The script scans number combinations in a range, using the template `a{op}b=`, e
 
 until a pair of numbers `a`, `b` yields a wrong answer. 
 
-Currently uses `gpt-3.5-turbo`, can be changed to `gpt-4`.
+**Currently uses `gpt-4o`.**
 
 ### Example: addition
 

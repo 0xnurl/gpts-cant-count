@@ -33,7 +33,7 @@ def _str_to_int(s):
     try:
         return int(s.replace(",", ""))
     except:
-        logger.exception(f"Model returned non-parsable response: '{s}")
+        logger.warning(f"Model returned non-parsable response: '{s}'")
         return None
 
 
@@ -70,7 +70,7 @@ def run(min_n, max_n, max_attempts, op):
     max_idx = len(all_combinations) - 1
     next_idx = max_idx // 2
 
-    logger.info(f"Running from {min_n:,} to {max_n:,}, operator '{op}'...")
+    logger.info(f"Testing {_MODEL} on operator '{op}' from {min_n:,} to {max_n:,}...")
 
     num_attempts = 0
     while num_attempts < max_attempts:
