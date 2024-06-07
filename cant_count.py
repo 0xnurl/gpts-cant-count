@@ -11,7 +11,7 @@ import openai
 logger.remove()
 logger.add(sys.stderr, level="INFO")
 
-_MODEL = "gpt-3.5-turbo"
+_MODEL = "gpt-4o"
 _API_KEY = os.getenv("OPENAI_API_KEY")
 
 _CLIENT = openai.OpenAI(api_key=_API_KEY)
@@ -30,11 +30,15 @@ def _send_request(prompt):
 
 
 def _str_to_int(s):
-    return int(s.replace(",", ""))
+    try:
+        return int(s.replace(",", ""))
+    except:
+        logger.exception(f"Model returned non-parsable response: '{s}")
+        return None
 
 
 def _extract_ints_from_string(s) -> list[int]:
-    return list(map(_str_to_int, re.findall(r"[\d,]+", s)))
+    return list(filter(None, map(_str_to_int, re.findall(r"[\d,]+", s))))
 
 
 def _get_response_answers(response) -> tuple[int, ...]:
