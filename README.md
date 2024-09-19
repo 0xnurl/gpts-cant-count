@@ -2,8 +2,6 @@
 
 ### Demo of even the most advanced LLMs' inability to handle basic arithmetic.
 
-For a theory about what might be the source of this and how it could be fixed, see [Minimum Description Length Recurrent Neural Networks](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00489/112499/Minimum-Description-Length-Recurrent-Neural).
-
 The script scans number combinations in a range, using the template `a{op}b=`, e.g.:
 ```
 17+950=
@@ -48,6 +46,8 @@ Running from 1,000 to 1,100...
 Model answered: 'The product of 1088 and 1037 is 1,127,456.'.  
 Correct answer was: 1,128,256.                                
 ```
+
+For a theory about what might be the source of this and how it could be fixed, see [Minimum Description Length Recurrent Neural Networks](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00489/112499/Minimum-Description-Length-Recurrent-Neural).
 
 ## Usage
 
